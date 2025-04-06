@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jq/jq.js"></script>
+    <script src="bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="bootstrap-4.6.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="弹窗.css"> 
+    <link rel="stylesheet" href="等分盒子.css">  
+    <style>
+
+.dibu{
+            width: 100%;
+            height: 300px;
+            background-color: rgb(28, 3, 38);
+            position: relative;
+            top: 335px;
+            color: white;
+            text-align: center;
+        }
+
+.btn1{
+  background-color:green;position: relative;top:500px;padding-left:50px;
+  justify-content: center;
+  display: flex;
+  opacity: 0.8;
+}
+     
+
+.xinxi{
+  margin-top: 30px;
+}
+
+
+
+/* .yanzheng{
+  width: 0px;
+} */
+
+
+
+
+
+.outer-box { display: flex;
+   /* 使用Flexbox */ justify-content: center;
+    /* 水平居中 */ align-items: center; 
+  /* 垂直居中 */ height: 300px;
+   /* 设置高度以便看到垂直居中效果 */ 
+   width: 800px;
+  position: relative;
+  top: 1400px;
+  background-color: #f9f9f9;
+  margin: auto;
+  
+  }
+
+  /* 内部盒子的样式 */ .inner-box { width: 600px; height: 100px; 
+  background-color:rgb(154, 227, 247);
+  
+  }
+
+  .parent-box1 {  
+    display: grid;  
+    grid-template-columns: repeat(2, 1fr); /* 创建两列的网格 */  
+    grid-gap: 50px; /* 网格线和子盒子之间的间隔 */  
+    padding: 50px; /* 父盒子的内边距 */  
+    background-color: #f9f9f9;
+    position: relative;
+    top: 150px;
+   margin: auto;
+    width: 1000px;
+    height: 500px;
+  
+
+}  
+  
+.child-box1 {  
+  background-color: rgb(181, 233, 255);
+    padding: 10px; /* 子盒子的内边距 */  
+    box-sizing: border-box; /* 确保边框和内边距包含在宽度内 */  
+}
+
+
+
+
+@media screen and (max-width:399px) {
+          
+         .jiayou2{
+          position: relative;
+          left: 400px;
+         }
+          
+        }
+
+        .heiye{
+          background-color: #333;  
+    color: #fff;  
+        }
+
+        .heiye1{
+          background-color: #fcfafa;  
+    color: #fff;  
+        }
+    </style>
+</head>
+<body>
+      
+          
+        <div>
+          <nav class="navbar navbar-light" style="background-color: #e3f2fd;height: 100px;">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <a class="navbar-brand" href="#"><img src="images/logo.png"style="width:35px;height:35px" alt=""></a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="#">首页 <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="院校库.html">院校库</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="院校满意度.html">院校满意度</a>
+                  </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                  <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+               
+              </div>
+          &nbsp;    &nbsp;  &nbsp;  &nbsp;  <img src="images/亮度_brightness.png"onclick="h()" style="width:28px;height: 28px;">/<img src="images/月亮_moon.png"onclick="g()" style="width:20px;height: 20px;">
+            </nav>
+            <p style="font-family: '演示佛系体';font-size: 50px;text-align: center;">升学网</p>
+          </nav>
+        </div>
+      
+        
+
+        <!-- 饼图 -->
+       <img src="images/饼.png"style="width:400px;height:400px;margin:auto;img-fluid;display:flex;justify-content:center;align-items:center;" alt="">
+
+       <!-- 导航栏 -->
+
+<div style="margin: auto;position: relative;top: -400px;">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary btn1"style="">首页</button>
+          <button type="button" class="btn btn-secondary btn1"style="">院校查询</button>
+          <button type="button" class="btn btn-secondary btn1"style="">专业查询</button>
+          <button type="button" class="btn btn-secondary btn1"style="" onclick="d()">成绩查询</button>
+
+        </div>
+      </div>
+
+
+<!-- 弹窗 -->
+
+
+<div class="弹窗">
+  <button id="关闭">&times;</button>
+   <h1 style="text-align: center;">高考信息查询</h1>
+    
+   <div class="input-group input-group-lg xinxi" >
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">考生号：</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+  </div>
+  
+
+  <div class="input-group input-group-lg xinxi">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">身份证：</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+  </div>
+
+
+
+  <div class="input-group input-group-lg xinxi">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">验证码：</span>
+    </div>
+    <input type="text"  class="form-control yanzheng" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+  </div>
+
+  <div style="position: relative;top: 50px;width: 450px;left: 80px;">
+<button type="button" class="btn btn-light"style="margin-left:50px;width:170px">登录</button>
+<button type="button" class="btn btn-light"style="margin-left:50px;width:170px">重置</button>
+</div>
+
+  </div>  
+
+
+
+
+<script>
+
+  function d(){
+  var y=document.querySelector('.弹窗');
+  y.style.display='block';}
+  document.querySelector("#关闭").addEventListener("click", function(){ document.querySelector(".弹窗").style.display = "none"; });
+   </script>
+
+
+
+   <!-- 院校查询 -->
+   
+    
+
+ 
+  <img src="images/xing.png"style="position: relative;top:150px;width:200px;height:200px;margin:auto;left: 0px;display:flex;justify-content:center;align-items:center;margin: auto;"class="img-fluid">
+  <p style="text-align:center;position: relative;top: 130px;font-family: '演示佛系体';font-size: 40px;">院校查询</p>
+  <div class="container">
+    <div class="row">
+    <div class="parent-box">  
+      
+        <div class="child-box col-sm-12 ">
+          <h4 style="font-weight: 600;">院校库</h4> 
+          <p>1. 覆盖全国2800多所招生高校，可按条件进行筛选。<br>
+            2. 查询招生高校基本信息、招生章程、学校及其专业介绍等信息。
+            <br>
+            <br>
+            <span style="float: right;">
+           <font color="green">查看</font></span> </p>
+        </div>  
+
+
+
+
+       
+        <div class="child-box col-sm-12">  
+          <h4 style="font-weight: 600;">院校满意度</h4> 
+          <p>1. 覆盖全国2800多所招生高校，可按条件进行筛选。<br>
+            2. 查询招生高校基本信息、招生章程、学校及其专业介绍等信息。
+            <br>
+            <br>
+            <span style="float: right;">
+           <font color="green">查看</font></span> </p></div>  
+    </div>  
+
+  </div>
+</div>
+</body>  
+</html>
+        
+
+<!-- 志愿参考 -->
+
+
+<img class="jiayou2" src="images/title3.png" class="img-fluid"style="position: relative;top:150px;width:300px;height:300px;img-fluid;display:flex;justify-content:center;align-items:center;margin: auto;">
+<p style="text-align: center;position: relative;top: 100px;font-family: '演示佛系体';font-size: 40px;">专业查询</p>
+
+<div class="container">
+  <div class="row">
+<div class="parent-box1 col-sm-12 col-md-12">  
+
+  <!-- 1 -->
+  <div class="child-box1">
+    <h4 style="font-weight: 600;">专业库</h4> 
+    <p>1. 覆盖全国2800多所招生高校，可按条件进行筛选。
+      <br>
+      2. 查询招生高校基本信息、招生章程、学校及其专业介绍等信息。
+      <br>
+      <br>
+      <span style="float: right;">
+     <font color="green">查看</font></span> </p>
+    </div> 
+
+<!-- 2 -->
+  <div class="child-box1">
+    <h4 style="font-weight: 600;">专业满意度</h4> 
+    <p>1. 覆盖全国2800多所招生高校，可按条件进行筛选。
+      <br>
+      2. 查询招生高校基本信息、招生章程、学校及其专业介绍等信息。
+      <br>
+      <br>
+      <span style="float: right;">
+     <font color="green">查看</font></span> </p>
+  </div>  
+
+
+  <!-- 3 -->
+  <div class="child-box1">
+    <h4 style="font-weight: 600;">专业推荐</h4> 
+    <p>1. 覆盖全国2800多所招生高校，可按条件进行筛选。
+      <br>
+      2. 查询招生高校基本信息、招生章程、学校及其专业介绍等信息。
+      <br>
+      <br>
+      <span style="float: right;">
+     <font color="green">查看</font></span> </p>
+  </div>  
+
+
+  <!-- 4 -->
+  <div class="child-box1">
+    <h4 style="font-weight: 600;">专业解读</h4> 
+    <p>1. 覆盖全国2800多所招生高校，可按条件进行筛选。
+      <br>
+      2. 查询招生高校基本信息、招生章程、学校及其专业介绍等信息。
+      <br>
+      <br>
+      <span style="float: right;">
+     <font color="green">查看</font></span> </p>
+  </div>  
+</div>  
+
+</div>
+</div>
+
+
+</div>
+
+
+
+<div class="dibu">
+
+
+  <img src="" alt="">
+  <p class="m-1">企业培训 | 合作事宜 | 版权投诉</p>
+  <p>冀ICP备12345678.© 2019-2025 chaoliuchuanda.Powered by chaopai.</p>
+  <p>学信网 中心简介 联系我们 版权声明 帮助中心 网站地图 网站宣传主办单位：教育部学生服务与素质发展中心（原全国高等学校学生信息咨询与就业指导中心）
+    Copyright © 2003-2024 学信网 All Rights Reserved
+    京ICP备19004913号-1  京公网安备11010202009747号 官方微信  官方微博客服热线：010-67410388
+    客服邮箱：kefu#chsi.com.cn（将#替换为@）</p>
+</div>
+
+</div>
+</div>
+
+
+
+<script>
+  function h(){
+    var h=document.querySelector('body');
+    h.className="heiye";
+  
+  }
+
+
+  function g(){
+    var h=document.querySelector('body');
+    h.className="heiye1";
+  
+  }
+</script>
+
+</body>
+
+</html>

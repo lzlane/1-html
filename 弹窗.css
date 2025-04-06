@@ -1,0 +1,16 @@
+*{ padding: 0px; margin: 0px; } 
+.弹窗 { display: none; align-items: center; 
+    flex-direction: column; box-sizing: border-box;
+     width: 50%; height: 300px; background: lightblue; 
+     position: absolute; padding: 40px 40px;
+      left: 30%; top: 35%; border-radius: 10px; 
+      overflow: scroll;
+   z-index: 999; } 
+      
+      .弹窗 button { margin: -15px -10px 0 auto; width: 20px; height: 40px;
+         font-size: 30px; background: none; border: none; cursor: pointer; z-index: 999;} 
+         .弹窗 p { margin: 5px 20px; font-size: 12px; color: rgb(99,98,98); z-index: 990;}
+          .弹窗 a { background: white; padding: 10px 60px; font-size: 12px;
+             margin-top: 20px; text-decoration: none; 
+             border-radius: 10px; color: black; transition: 0.4s;z-index: 999; } 
+             .弹窗 a:hover { scale: 0.94; }

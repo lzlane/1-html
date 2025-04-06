@@ -1,0 +1,26 @@
+/* 样式表 */ /* 外部盒子样式 */
+ .outer-box { display: flex; justify-content: center; 
+    /* 水平居中 */ align-items: center;
+     /* 垂直居中 */ height: 60vh;
+      /* 假设你想要外部盒子占据整个视口高度 */ padding: 20px;
+       /* 外部盒子的内边距 */ box-sizing: border-box;
+        /* 包含内边距和边框 */ background-color: #f2f2f2; /* 可选：为外部盒子设置背景色 */ 
+    
+    
+    position: relative;
+top: 360px;
+border-radius: 30px;
+}
+        
+        /* 内部盒子样式 */ .inner-box { padding: 20px; /* 内部盒子的内边距 */ box-sizing: border-box; /* 包含内边距和边框 */ background-color: #fff; /* 可选：为内部盒子设置背景色 */ /* 响应式样式（例如，设置最大宽度） */ max-width: 80%; /* 根据需要调整 */ text-align: center; /* 如果需要文本居中 */ } /* 响应式媒体查询（可选） */ @media (max-width: 600px) {
+            
+            .inner-box { max-width: 80%; /* 在小屏幕上使内部盒子宽度为100% */ 
+        
+        height: 300px;
+        } 
+    
+    
+       .ok1{
+        display: none;
+       }
+    }
